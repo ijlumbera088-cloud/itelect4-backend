@@ -2,6 +2,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { NextFunction, Request, Response } from 'express';
 import { connectDb } from './config/db.js';
+import aiRoutes from './routes/ai.js';
 import authRoutes from './routes/auth.js';
 import itemsRoutes from './routes/items.js';
 import usersRoutes from './routes/users.js';
@@ -48,6 +49,7 @@ app.use('/api/items', itemsRoutes);
 app.use('/items', itemsRoutes);
 app.use('/api/submissions', itemsRoutes);
 app.use('/submissions', itemsRoutes);
+app.use('/api/ai', aiRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: `Route not found: ${req.originalUrl}` });
